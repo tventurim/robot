@@ -7,11 +7,11 @@ using namespace std;
 
 double horizAngle = 0.0;	
 double vertAngle = 0.0;	
-double limbAngle = 0.0; //‚ngulo da passada do robo
+double limbAngle = 0.0; //√¢ngulo da passada do robo
 bool walk = false;	
 
 void drawRobot() {
-	//cabeÁa
+	//cabe√ßa
 	glColor3f(1.0, 1.0, 1.0);
 	glPushMatrix();
 	glTranslated(0.0, 1.0, 0.0);
@@ -28,7 +28,7 @@ void drawRobot() {
 
 
 }
-//BraÁo esquerdo
+//Bra√ßo esquerdo
 void leftArm() {
 	glColor3f(1.0, 0.0, 1.0);
 	glPushMatrix();
@@ -48,7 +48,7 @@ void leftArm() {
 	glutSolidCube(.50);
 	glPopMatrix();
 	
-	//m„os
+	//m√£os
 	glColor3f(1.0, 1.0, 1.0);
 	glPushMatrix();
 	glTranslated(-0.30, 0.17, 0.0);
@@ -57,7 +57,7 @@ void leftArm() {
 	glPopMatrix();
 
 }
-//braÁo direito
+//bra√ßo direito
 void rightArm() {
 	glColor3f(1.0, 0.0, 1.0);
 	glPushMatrix();
@@ -77,7 +77,7 @@ void rightArm() {
 	glutSolidCube(.50);
 	glPopMatrix();
 	
-	//m„o
+	//m√£o
 	glColor3f(1.0, 1.0, 1.0);
 	glPushMatrix();
 	glTranslated(0.30, 0.17, 0.0);
@@ -93,7 +93,7 @@ void leftLeg() {
 	glScaled(0.20, 1.0, 0.20);
 	glutSolidCube(.50);
 	glPopMatrix();
-	//pÈs
+	//p√©s
 	glColor3f(1.0, 0.0, 1.0);
 	glPushMatrix();
 	glTranslated(-0.20, -0.50, 0.15);
@@ -114,7 +114,7 @@ void rightLeg() {
 	glScaled(0.20, 1.0, 0.20);
 	glutSolidCube(.50);
 	glPopMatrix();
-	//pÈs
+	//p√©s
 	glColor3f(1.0, 0.0, 1.0);
 	glPushMatrix();
 	glTranslated(0.20, -0.50, 0.15);
@@ -133,7 +133,7 @@ void myInit() {
 	glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	glOrtho(-2.0 * (64 / 48.0), 2.0 * (64 / 48.0), -2.0, 2.0, 0.1, 100.0); //esquerda, direita, baixo, cima, perto, longe ProjeÁ„o Paralela
+	glOrtho(-2.0 * (64 / 48.0), 2.0 * (64 / 48.0), -2.0, 2.0, 0.1, 100.0); //esquerda, direita, baixo, cima, perto, longe Proje√ß√£o Paralela
 	glViewport(0, 0, 800, 640);
 
 	//Definindo testura
@@ -152,7 +152,7 @@ void myInit() {
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, lightIntensity);
 
 }
-//Se nada mais acontecer, faÁa movimentos de caminhada
+//Se nada mais acontecer, fa√ßa movimentos de caminhada
 void Walk(void)
 {
 	static float mf = 0.05;	//fator de movimento dos membros
@@ -182,7 +182,7 @@ void myDisplay(void) {
 		glRotated(horizAngle, 0.0, 1.0, 0.0f);
 		drawRobot();
 		glPopMatrix();
-		//Movimento de caminhar com o braÁo esquerdo
+		//Movimento de caminhar com o bra√ßo esquerdo
 		glPushMatrix();
 		glRotated(vertAngle, 1.0, 0.0, 0.0f);
 		glRotated(horizAngle, 0.0, 1.0, 0.0f);
@@ -191,7 +191,7 @@ void myDisplay(void) {
 		glTranslated(0.30, -1.0, 0.0);
 		leftArm();
 		glPopMatrix();
-		//Movimento de andar com o braÁo direito
+		//Movimento de andar com o bra√ßo direito
 		glPushMatrix();
 		glRotated(vertAngle, 1.0, 0.0, 0.0f);
 		glRotated(horizAngle, 0.0, 1.0, 0.0f);
@@ -216,7 +216,7 @@ void myDisplay(void) {
 		glPopMatrix();
 	}
 	else if (walk == false) {
-		//Girando em torno do RobÙ sem Andar
+		//Girando em torno do Rob√¥ sem Andar
 		glPushMatrix();
 		glRotated(vertAngle, 1.0, 0.0, 0.0f);
 		glRotated(horizAngle, 0.0, 1.0, 0.0f);
@@ -241,7 +241,7 @@ void myKeyboard(unsigned char key, int x, int y) {
 
 	switch (key)
 	{
-	case 's':
+	case 'w':
 		if (walk == false) {
 			walk = true;
 		}
@@ -295,16 +295,16 @@ void arrowKeyPress(int key, int x, int y) {
 
 void main(int argc, char** argv) {
 
-	glutInit(&argc, argv);  //Kit de utilit·rios OpenGL
-	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);  //buffer duplo para animaÁ„o
+	glutInit(&argc, argv);  //Kit de utilit√°rios OpenGL
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);  //buffer duplo para anima√ß√£o
 	glutInitWindowSize(800, 640);
 	glutInitWindowPosition(100, 100);
-	glutCreateWindow("Android com 9 articulaÁıes");
+	glutCreateWindow("Android com 9 articula√ß√µes");
 	glutDisplayFunc(myDisplay);
-	glutIdleFunc(Walk);		//FunÁ„o de caminhada contÌnua para quando nada mais estiver acontecendo
+	glutIdleFunc(Walk);		//Fun√ß√£o de caminhada cont√≠nua para quando nada mais estiver acontecendo
 
-	glutKeyboardFunc(myKeyboard);	//myKeyboard ir· lidar com teclas normais
-	glutSpecialFunc(arrowKeyPress);	//arrowKeyPress ir· lidar com teclas especiais
+	glutKeyboardFunc(myKeyboard);	//myKeyboard ir√° lidar com teclas normais
+	glutSpecialFunc(arrowKeyPress);	//arrowKeyPress ir√° lidar com teclas especiais
 
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
